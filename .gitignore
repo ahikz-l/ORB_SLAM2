@@ -10,6 +10,7 @@ Thirdparty/
 Vocabulary/
 build/
 cmake-build-debug/
+.idea/
 *~
 lib/
 
