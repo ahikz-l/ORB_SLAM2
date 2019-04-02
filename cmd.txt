@@ -1,0 +1,4 @@
+./Examples/Monocular/mono_kitti Vocabulary/voc.txt Examples/Monocular/KITTI00-02.yaml /home/kalchy/Datasets/KITTI/00
+
+./Examples/Monocular/mono_robotcar Vocabulary/voc.txt Examples/Monocular/Robotcar.yaml /home/kalchy/Datasets/RobotCar/2014-12-02-15-30-08/
+~                                                                 

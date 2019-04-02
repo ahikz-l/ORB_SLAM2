@@ -9,6 +9,7 @@ KeyFrameTrajectory.txt
 Thirdparty/
 Vocabulary/
 build/
+cmake-build-debug/
 *~
 lib/
 

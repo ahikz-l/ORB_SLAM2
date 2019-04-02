@@ -9,6 +9,8 @@ MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
+set(THIRDPARTY_LIBS "/home/kalchy/Libraries/lib/ORB_SLAM2/")
+set(THIRDPARTY_INCLUDE_DIR "/home/kalchy/Libraries/src/ORB_SLAM2/")
 
 # Check C++11 or C++0x support
 include(CheckCXXCompilerFlag)
@@ -44,6 +46,7 @@ ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${EIGEN3_INCLUDE_DIR}
 ${Pangolin_INCLUDE_DIRS}
+${THIRDPARTY_INCLUDE_DIR}
 )
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
@@ -74,27 +77,27 @@ target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+${THIRDPARTY_LIBS}/libDBoW2.so
+${THIRDPARTY_LIBS}/libg2o.so
 )
 
 # Build examples
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/RGB-D)
-
-add_executable(rgbd_tum
-Examples/RGB-D/rgbd_tum.cc)
-target_link_libraries(rgbd_tum ${PROJECT_NAME})
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Stereo)
-
-add_executable(stereo_kitti
-Examples/Stereo/stereo_kitti.cc)
-target_link_libraries(stereo_kitti ${PROJECT_NAME})
-
-add_executable(stereo_euroc
-Examples/Stereo/stereo_euroc.cc)
-target_link_libraries(stereo_euroc ${PROJECT_NAME})
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/RGB-D)
+#
+#add_executable(rgbd_tum
+#Examples/RGB-D/rgbd_tum.cc)
+#target_link_libraries(rgbd_tum ${PROJECT_NAME})
+#
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Stereo)
+#
+#add_executable(stereo_kitti
+#Examples/Stereo/stereo_kitti.cc)
+#target_link_libraries(stereo_kitti ${PROJECT_NAME})
+#
+#add_executable(stereo_euroc
+#Examples/Stereo/stereo_euroc.cc)
+#target_link_libraries(stereo_euroc ${PROJECT_NAME})
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Monocular)
