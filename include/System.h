@@ -76,7 +76,7 @@ public:
     // Proccess the given monocular frame
     // Input images: RGB (CV_8UC3) or grayscale (CV_8U). RGB is converted to grayscale.
     // Returns the camera pose (empty if tracking fails).
-    cv::Mat TrackMonocular(const cv::Mat &im, const double &timestamp);
+    void TrackMonocular(const cv::Mat &im, const double &timestamp);
 
     // This stops local mapping thread (map building) and performs only camera tracking.
     void ActivateLocalizationMode();
@@ -111,7 +111,19 @@ public:
     // Only for stereo and RGB-D. This method does not work for monocular.
     // Call first Shutdown()
     // See format details at: http://www.cvlibs.net/datasets/kitti/eval_odometry.php
+    // void SaveTrajectoryKITTI(const string &filename);
+
+    // Save camera trajectory in the KITTI dataset ground truth format.
+    // For monocular.
+    // Call first Shutdown()
+    // See format details at: http://www.cvlibs.net/datasets/kitti/eval_odometry.php
     void SaveTrajectoryKITTI(const string &filename);
+
+    // Save keyframe pose in the KITTI dataset ground truth format.
+    // For monocular.
+    // Call first Shutdown()
+    // See format details at: http://www.cvlibs.net/datasets/kitti/eval_odometry.php
+    void SaveKeyFrameTrajectoryKITTI(const string &filename);
 
     // TODO: Save/Load functions
     // SaveMap(const string &filename);
@@ -175,6 +187,8 @@ private:
     std::vector<MapPoint*> mTrackedMapPoints;
     std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
     std::mutex mMutexState;
+
+    std::vector<cv::Mat> mFramePoses;
 };
 
 }// namespace ORB_SLAM

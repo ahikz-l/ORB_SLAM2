@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(ORB_SLAM2)
 
+# For saving all frame trajectory, add macro SAVEALLFRAME
+add_definitions(-DSAVEALLFRAME)
+
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
@@ -77,7 +80,7 @@ target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${THIRDPARTY_LIBS}/libDBoW2.so
+${THIRDPARTY_LIBS}/libdbow2.so
 ${THIRDPARTY_LIBS}/libg2o.so
 )
 
